@@ -41,3 +41,8 @@ provider "aws" {
     secret_key = var.aws_secret_access_key
     region = var.aws_region
 }
+
+# Get public IP
+data "http" "myip" {
+  url = "http://ipv4.icanhazip.com"
+}
