@@ -21,7 +21,7 @@ resource "aws_security_group" "mervin_priv_linux" {
       from_port   = ingress.value
       to_port     = ingress.value
       protocol    = "tcp"
-      cidr_blocks = [var.ip_subnet_priv_block]
+      cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
     }
   }
 
@@ -59,7 +59,7 @@ resource "aws_security_group" "mervin_priv_windows" {
       from_port   = ingress.value
       to_port     = ingress.value
       protocol    = "tcp"
-      cidr_blocks = [var.ip_subnet_priv_block]
+      cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
     }
   }
 
